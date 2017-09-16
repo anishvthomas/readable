@@ -1,0 +1,12 @@
+.categorylist {
+  a {
+      
+    &:after {
+      display: inline-block;
+      content: "|";
+    }
+    &:last-child:after{
+      content: "";
+    }
+  }
+}

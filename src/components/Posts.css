@@ -1,0 +1,50 @@
+.posts
+{
+
+ .title, .postedBy {
+    width: 20%;
+    padding: 15px 10px;
+    text-align: left;
+    color:red,
+
+  }
+   .posts .author, .upVotes, .scheduledOn, .category,  {
+    width: 15%;
+    padding: 15px 10px;
+    text-align: left;
+  }
+  .title a {
+    color: #2b6dad;
+    text-decoration: none;
+    text-align: left;
+  }
+  .selectBox{
+    vertical-align: middle;
+    text-align: center;
+  }
+  .selectTitle{
+    padding: 15px 10px;
+  }
+  .upVotes a {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: color ease-in-out 100ms,background-color ease-in-out 100ms,border-color ease-in-out 100ms;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+    display: inline-block;
+    font-weight: 500;
+    outline: 0;
+    padding: 3px 7px 4px 7px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: #f1f8fb;
+    color: #2b6dad;
+    border: 1px solid #bbcadc;
+  }
+}
