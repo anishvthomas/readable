@@ -1,3 +1,15 @@
+h1 {
+    color: #f26c4f;
+    font-size: 36px;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+
 .posts
 {
 

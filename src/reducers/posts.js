@@ -1,5 +1,5 @@
 import sortBy from 'sort-by';
-import { RECEIVE_ALL_POSTS, RECEIVE_SINGLE_POST, UPDATE_VOTESCORE,SORT_POSTS ,DELETE_POST, LOAD_FORMDATA} from '../actions'
+import { RECEIVE_ALL_POSTS, RECEIVE_SINGLE_POST, UPDATE_VOTESCORE,SORT_POSTS ,DELETE_POST, LOAD_FORMDATA,UPDATE_POST} from '../actions'
 const initialState ={
     posts:[],
     currentPost:null
@@ -50,6 +50,7 @@ export default function posts(state=initialState,action) {
             return updatedPostsWithStatusChanges(state,action)
         case LOAD_FORMDATA:
                 return state
+        case UPDATE_POST: return state
         default: return state
     }
 }

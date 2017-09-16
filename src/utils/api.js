@@ -49,6 +49,20 @@ if (!token)
 
   }
 
+export const APIupdatePost = (postData) => {
+    console.log("$$$$$$$$$$$APIupdatePost",postData)
+    return fetch(`http://localhost:5001/posts/${postData.id}`, {
+      headers: { Authorization: token ,
+                  'Content-Type': "application/json"
+                  },
+      method: 'PUT',
+      body: JSON.stringify(postData)})
+      .then((res) => { console.log("fetch localhost:5001/posts",res)
+            return res.json()})
+      .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
+            return data})
+
+}
 
 export const APIgetSinglePost = (postid) => {
     console.log("APIgetSinglePost",postid)

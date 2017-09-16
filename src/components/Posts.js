@@ -35,7 +35,7 @@ doSortByDate= (event) => {
         //console.log("Posts:posts allPosts ",allPosts)
         return (
             <div className='container posts'>
-            Posts
+            <h1>Posts</h1>
             <table className="table" style={{border:1}}>
             <thead>
             <tr>

@@ -1,6 +1,6 @@
 import React from 'react'
 import EditPostForm from './EditPostForm';
-import { addNewPost } from '../actions'
+import { updateExistingPost } from '../actions'
 import { connect } from 'react-redux'
 import uuid from 'uuid/v1'
 import { fetchSinglePost } from '../actions'
@@ -10,10 +10,10 @@ class EditPost extends React.Component {
     // Do something with the form values
     console.log('EditPost',values);
     values['timestamp']=Date.now()
-    values['id']=uuid()
-    values['voteScore']= 0
+    values['id']=this.props.postid
+    values['voteScore']= this.props.currentpost.voteScore
     console.log('NewPost enchanced',values);
-    this.props.createNewPost(values)
+    this.props.updatePost(values)
     this.props.history.push(`/`);
 
  }
@@ -49,7 +49,7 @@ function mapStateToProps(state,ownprops){
 function mapDispatchToProps (dispatch) {
   return {
     loadSinglePost: (postid) => dispatch(fetchSinglePost(postid)),
-    createNewPost: values => dispatch(addNewPost(values))
+    updatePost: values => dispatch(updateExistingPost(values))
    }
  }
  export default connect(mapStateToProps, mapDispatchToProps)(EditPost)

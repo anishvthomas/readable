@@ -13,8 +13,9 @@ class EditPostForm extends Component
     }
 render()
 {  const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
-  console.log('EditPostForm: categories:', categories)
+  //console.log('EditPostForm: categories:', this.props.categories.length ? this.props.categories.map(categoryOption => categoryOption.name):"")
   //const { handleSubmit } = this.props;
+  console.log('EditPostForm:render',this.props.categ.categories)
   return (
       <div className='container'>
       <h1> Edit a topic </h1>
@@ -43,9 +44,9 @@ render()
         <div>
           <Field name="category" component="select">
             <option value="">Select a category...</option>
-            {categories.length && categories.map(categoryOption =>
-              <option value={categoryOption} key={categoryOption}>
-                {categoryOption}
+            {this.props.categ.categories.length && this.props.categ.categories.map(categoryOption =>
+              <option value={categoryOption.name} key={categoryOption.name}>
+                {categoryOption.name}
               </option>
             )}
           </Field>
@@ -81,7 +82,7 @@ function mapStateToProps(state,ownprops){
     return {
         //postid: postid,
         initialValues:state.posts.currentPost,
-        categories:state.categories
+        categ:state.categories
 
     }
 }

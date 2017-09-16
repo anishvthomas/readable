@@ -148,3 +148,19 @@ export const loadFormData = (data) => dispatch => {
     console.log('loadFormData&&&&&&&&&&&&&&&&&')
     dispatch(loadForm(data))
 };
+
+
+
+
+export const UPDATE_POST = 'UPDATE_POST'
+
+export const updatePost = postData => ({
+type: UPDATE_POST,
+postData
+});
+
+export const updateExistingPost = (postData) => dispatch => {
+    console.log('updateExistingPost',postData)
+    API.APIupdatePost(postData)
+    .then((postData) => dispatch(updatePost(postData)))
+};

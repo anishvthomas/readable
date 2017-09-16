@@ -22,7 +22,7 @@ class PostDetail extends Component {
 
     return (
         <div className='container'>
-        PostDetail
+        
             <h1>{this.props.currentpost && this.props.currentpost.title}</h1>
             <span>by {this.props.currentpost && this.props.currentpost.author}
               on {this.props.currentpost && new Date(this.props.currentpost.timestamp).toString()}

@@ -1,12 +1,9 @@
-.categorylist {
-  a {
-      
-    &:after {
+.categorylist a {
+     ::after {
       display: inline-block;
       content: "|";
     }
-    &:last-child:after{
+    ::last-child:after{
       content: "";
     }
   }
-}
