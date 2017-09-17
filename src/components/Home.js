@@ -15,7 +15,7 @@ import {Link} from 'react-router-dom'
         <Categories categorylist={categories}/>
         <Link to={`/post`}>  New Post  </Link>
         {console.log("Home:postlength: ",posts.posts.length)}
-        {posts.posts.length && <Posts/>}
+        {posts.posts.length && <Posts category=""/>}
         {/*posts.posts.length && <Posts allPosts={posts.posts}/>*/}
         </div>
     )

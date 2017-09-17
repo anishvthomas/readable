@@ -17,7 +17,7 @@ class Posts extends Component {
  }
 doSortByDate= (event) => {
     event.preventDefault()
-    window.alert('voteScore')
+    
 
     this.props.sortPostData('voteScore')
     console.log('doSort^^^^^^^^^^^^^^^^^^^')
@@ -46,7 +46,13 @@ doSortByDate= (event) => {
             </tr>
             </thead>
             <tbody>
-            {allPosts.posts.filter((postItem) => postItem.deleted === false).map((postItem)=>
+            {   allPosts.posts.filter((postItem) => { if(this.props.category==="")
+                                                        return postItem.deleted === false
+                                                      else
+                                                        return (postItem.deleted === false && postItem.category===this.props.category)
+
+                                                    }
+                                        ).map((postItem)=>
                 <tr key={postItem.id}>
                 <td className='title'>
                 <Link to={{pathname: `/${postItem.category}/${postItem.id}`}}>{postItem.title}</Link>
@@ -77,6 +83,7 @@ function mapStateToProps(state,ownprops){
         postid: postid,
         allPosts: state.posts,
         currentpost:state.posts.currentPost,
+        category: ownprops.category
     }
 }
 function mapDispatchToProps (dispatch) {

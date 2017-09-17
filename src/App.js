@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Switch, Route, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import Categories  from './components/Categories.js'
+import Category  from './components/Category.js'
 import Home  from './components/Home'
 import NewPost  from './components/NewPost'
 import EditPost  from './components/EditPost'
@@ -24,6 +25,7 @@ class App extends Component {
             <Home data={this.props}/> )} />
             <Route path ='/post' component = {NewPost} />
             <Route exact path="/:categories/:postid" component={PostDetail} />
+            <Route exact path="/category/list/:categorypath" component={Category} />
             <Route exact path="/create/comment/:postid" component={NewComment}/>
             <Route exact path="/edit/post/:postid" component={EditPost}/>
 

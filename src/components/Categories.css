@@ -1,9 +1,13 @@
-.categorylist a {
-     ::after {
+.categorylist a:after {
       display: inline-block;
-      content: "|";
+      content: " |";
     }
-    ::last-child:after{
+ .categorylist a:last-child:after{
       content: "";
     }
-  }
+.categorylist h1 {
+    color: #f26c4f;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

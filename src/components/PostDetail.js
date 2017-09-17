@@ -21,8 +21,8 @@ class PostDetail extends Component {
         console.log('*****PostDetailrender***** comments.length',comments.length)
 
     return (
-        <div className='container'>
-        
+        <div className='container postdetail'>
+
             <h1>{this.props.currentpost && this.props.currentpost.title}</h1>
             <span>by {this.props.currentpost && this.props.currentpost.author}
               on {this.props.currentpost && new Date(this.props.currentpost.timestamp).toString()}
@@ -31,12 +31,16 @@ class PostDetail extends Component {
 
             <button className="btn btn-skyblue"><i className="fa fa-thumbs-o-up"></i>{this.props.currentpost && this.props.currentpost.voteScore}</button>
             <Link to={`/edit/post/${this.props.postid}`}>  <Button  bsStyle="primary"> Edit Post</Button>  </Link>
+              <button className="btn btn-skyblue" onClick={()=>this.props.history.goBack()}>
+                <i className="fa fa-reply"></i> Go Back
+              </button>
 
-            {comments.length && <Comments />}
+            {<Comments />}
             <Link to={`/create/comment/${this.props.postid}`}>  <Button  bsStyle="primary"> Post a Comment</Button>  </Link>
 
         </div>
     )}
+
 }
 
 function mapStateToProps(state,ownprops){

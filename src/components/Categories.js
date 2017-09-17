@@ -12,12 +12,12 @@ class Categories extends Component {
     }
     render() {
         const { categories } = this.props.categorylist
-        //console.log("Categories:this.props ",this.props)
-        //console.log("Categories:categories ",categories)
+        console.log("^^^^^^sCategories:this.props ",this.props)
+        console.log("Categories:categories ",categories)
         return (
         <div className="categorylist">
+        {categories.length && (categories.map(item=><Link to={`/category/list/${item.path}`}>  {item.name}  </Link>))}
 
-        {categories.length && (categories.map(item=><Link to={`/categories/${item.path}`}>  {item.name}  </Link>))}
         </div>
     )
 }

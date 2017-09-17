@@ -28,7 +28,7 @@ const NewPostForm = props => {
         <button type="button" disabled={pristine || submitting} onClick={reset}>
           Clear
         </button>
-      </div>
+         </div>
     </form>
     </div>
   );
