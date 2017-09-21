@@ -171,3 +171,33 @@ export const APIdeletePost = (postid) => {
      .catch(error => console.log('APIdeletePosterror', error));
 
 }*/
+
+
+
+export const APIgetSingleComment = (commentid) => {
+    console.log("APIgetSingleComment",commentid)
+  return fetch(`http://localhost:5001/comments/${commentid}`, {
+        headers: { Authorization: token }
+      })
+        .then((res) => { console.log("fetch localhost:5001/posts",res)
+            return res.json()})
+        .then(data => { console.log("APIgetSingleComment******** => ",data)
+            return data})
+}
+
+
+export const APIupdateComment = (commentData) => {
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@APIupdateComment",commentData)
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@APIupdateComment",`http://localhost:5001/comments/${commentData.id}`)
+    return fetch(`http://localhost:5001/comments/${commentData.id}`, {
+      headers: { Authorization: token ,
+                  'Content-Type': "application/json"
+                  },
+      method: 'PUT',
+      body: JSON.stringify(commentData)})
+      .then((res) => { console.log("@@@@@@@@@@@@========APIupdateComment res",res)
+            return res.json()})
+      .then(data => { console.log("@@@@@@@@@@@@========APIupdateComment data",data)
+            return data})
+
+}

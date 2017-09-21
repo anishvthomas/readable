@@ -12,8 +12,8 @@ import {Link} from 'react-router-dom'
     return (
 
         <div className='container'>
-        <Categories categorylist={categories}/>
-        <Link to={`/post`}>  New Post  </Link>
+        {/*<Categories categorylist={categories}/>*/}
+        
         {console.log("Home:postlength: ",posts.posts.length)}
         {posts.posts.length && <Posts category=""/>}
         {/*posts.posts.length && <Posts allPosts={posts.posts}/>*/}

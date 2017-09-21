@@ -14,9 +14,8 @@ console.log("7777Category: props.categories",props.categories)
     return (
 
         <div className='container'>
-        {props.categories.length &&<Categories categorylist={props}/>}
+        {/*props.categories.length &&<Categories categorylist={props}/>*/}
         {/*<h1>{props.category} </h1>*/}
-        <Link to={`/post`}>  New Post  </Link>
         {console.log("Home:postlength: ",posts.length)}
         {posts.length && <Posts category={props.category}/>}
         {/*posts.posts.length && <Posts allPosts={posts.posts}/>*/}

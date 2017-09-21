@@ -1,3 +1,7 @@
+.categorylist {
+    font-family:calibri;
+    font-size:24px;
+}
 .categorylist a:after {
       display: inline-block;
       content: " |";

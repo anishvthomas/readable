@@ -1,6 +1,5 @@
 import React ,{ Component} from 'react';
 import { Field, reduxForm } from 'redux-form';
-import './NewPostForm.css'
 import { loadFormData } from '../actions'
 import { connect } from 'react-redux'
 
@@ -17,50 +16,65 @@ render()
   //const { handleSubmit } = this.props;
   console.log('EditPostForm:render',this.props.categ.categories)
   return (
-      <div className='container'>
+      <div className='container app'>
       <h1> Edit a topic </h1>
 
     <form className="form-horizontal" onSubmit={handleSubmit}>
-      <div className='form-group'>
-        <label>Author</label>
-        <div>
-          <Field name="author" component="input" type="text" placeholder="Author"/>
-        </div>
-      </div>
-      <div className='form-group'>
-        <label>Title</label>
-        <div>
-          <Field name="title" component="input" type="text" placeholder="Title" />
-        </div>
-      </div>
-      <div>
-        <label>Body</label>
-        <div>
-          <Field name="body" component="textarea" />
-        </div>
-      </div>
-      <div>
-        <label>Category</label>
-        <div>
-          <Field name="category" component="select">
-            <option value="">Select a category...</option>
-            {this.props.categ.categories.length && this.props.categ.categories.map(categoryOption =>
-              <option value={categoryOption.name} key={categoryOption.name}>
-                {categoryOption.name}
-              </option>
-            )}
-          </Field>
-        </div>
-      </div>
+        <table>
+        <tr>
+            <td>
+                <label>Author</label>
+            </td>
+            <td>
+                <Field name="author" component="input" type="text" placeholder="Author"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Title</label>
+            </td>
+            <td>
+                <Field name="title" component="input" type="text" placeholder="Title" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Body</label>
+            </td>
+            <td>
+                <Field name="body" component="textarea" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Category</label>
+            </td>
+            <td>
+              <Field name="category" component="select">
+                <option value="">Select a category...</option>
+                {this.props.categ.categories.length && this.props.categ.categories.map(categoryOption =>
+                  <option value={categoryOption.name} key={categoryOption.name}>
+                    {categoryOption.name}
+                  </option>
+                )}
+              </Field>
+             </td>
+        </tr>
+        <tr>
+            <td>
+            <button type="submit" disabled={pristine || submitting}>
+              Post
+            </button>
+            </td>
+            <td>
+            <button type="button" disabled={pristine || submitting} onClick={reset}>
+              Undo Changes
+            </button>
+            </td>
 
-      <div>
-        <button type="submit" disabled={pristine || submitting}>
-          Post
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Undo Changes
-        </button>
-      </div>
+
+        </tr>
+        </table>
     </form>
     </div>
   );}

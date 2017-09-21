@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch, Route, withRouter} from 'react-router-dom'
+import {Switch, Route, withRouter, Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import Categories  from './components/Categories.js'
 import Category  from './components/Category.js'
@@ -8,8 +8,11 @@ import NewPost  from './components/NewPost'
 import EditPost  from './components/EditPost'
 import PostDetail  from './components/PostDetail'
 import NewComment  from './components/NewComment'
-import EditComment  from './components/EditPost'
+import EditComment  from './components/EditComment'
 import { fetchCategories, fetchPosts } from './actions'
+import {BrowserRouter as Router} from 'react-router-dom';
+
+import './App.css'
 
 class App extends Component {
     componentDidMount=()=> {
@@ -20,16 +23,19 @@ class App extends Component {
         console.log("App render props",this.props.categories)
     return (
       <div className="container">
-            <Switch>
+
+        <Categories categorylist={this.props.categories}/>
             <Route exact path ='/' render={() => (
             <Home data={this.props}/> )} />
-            <Route path ='/post' component = {NewPost} />
+
             <Route exact path="/:categories/:postid" component={PostDetail} />
+            <Route exect path ="/create/new/post" component = {NewPost} />
             <Route exact path="/category/list/:categorypath" component={Category} />
             <Route exact path="/create/comment/:postid" component={NewComment}/>
             <Route exact path="/edit/post/:postid" component={EditPost}/>
+            <Route exact path="/edit/comment/:commentid" component={EditComment}/>
 
-            </Switch>
+
 
       </div>
     );

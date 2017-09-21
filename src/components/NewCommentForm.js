@@ -13,27 +13,38 @@ class NewCommentForm extends Component  {
         body}
         console.log('NewCommentForm this.props',this.props)
         this.props.submitForm(values)
+    
     }
-   render () {
-       return (
-      <div className='container'>
-      <h1> Post a Comment </h1>
-    {/*<Link to={`/${category}/${parentId}`}>Close</Link>*/}
-    <form className="form-vertical" onSubmit={this.handleSubmit}>
-      <div>
-      <label>Author</label>
-      <input type="text" name="author" placeholder="Author"
-      ref={(thisInput) => {this.authorInput = thisInput}}/>
-      </div>
-      <div>
-      <label>Body</label><textarea name="body" placeholder="Body"
-      ref={(thisInput) => {this.bodyInput = thisInput}}></textarea>
-      </div>
-      <button>Submit</button>
 
-    </form>
-    </div>
-  );}
+
+    render () {
+        return (
+            <div className='container app'>
+                <h1> Post a Comment </h1>
+                {/*<Link to={`/${category}/${parentId}`}>Close</Link>*/}
+                <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                    <div className='form-group row'>
+                        <label className='col-2 control-label'>Author</label>
+                        <div className='col-10'>
+                            <input type="text" name="author" placeholder="Author"
+                            ref={(thisInput) => {this.authorInput = thisInput}}/>
+                        </div>
+                    </div>
+
+                    <div className='form-group row'>
+                        <label className='col-2 control-label'>Body</label>
+                        <div className='col-10'>
+                            <textarea name="body" placeholder="Body"
+                            ref={(thisInput) => {this.bodyInput = thisInput}}></textarea>
+                        </div>
+                    </div>
+
+                    <button  className="btn btn-success">Submit</button>
+
+                </form>
+            </div>
+        )
+    }
 };
 
 export default NewCommentForm

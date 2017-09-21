@@ -36,7 +36,7 @@ class Comments extends Component {
           {allComments.comments.filter((commentItem) => commentItem.deleted === false).map((commentItem)=>
              <tr key={commentItem.id}>
               <td className='title'>
-              <Link to={{pathname: `/${commentItem.parentid}/${commentItem.id}`}}>{commentItem.body}</Link>
+              <Link to={{pathname: `/edit/comment/${commentItem.id}`}}>{commentItem.body}</Link>
               <i className="fa fa-trash-o" aria-hidden="true" onClick={() => this.props.deleteSelected(commentItem.id)}></i>
 
             </td>

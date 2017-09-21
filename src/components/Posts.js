@@ -17,7 +17,7 @@ class Posts extends Component {
  }
 doSortByDate= (event) => {
     event.preventDefault()
-    
+
 
     this.props.sortPostData('voteScore')
     console.log('doSort^^^^^^^^^^^^^^^^^^^')

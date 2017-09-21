@@ -14,12 +14,15 @@ class NewPost extends React.Component {
     console.log('NewPost enchanced',values);
     this.props.createNewPost(values)
     this.props.history.push(`/`);
- 
+
+ }
+ cancel=()=>{
+     this.props.history.push(`/`);
  }
   render() {
     console.log("NewPostprops",this.props)
     return (
-      <NewPostForm class= 'container' onSubmit={this.submit} />
+      <NewPostForm class= 'container' onSubmit={this.submit} categorylist={this.props.categories} handleCancel={this.cancel}/>
     );
   }
 }

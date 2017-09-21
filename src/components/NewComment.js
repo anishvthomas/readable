@@ -14,13 +14,14 @@ class NewComment extends React.Component {
     values['parentId']=this.props.postid
     console.log('NewComment enchanced',values);
     this.props.createNewComment(values)
-    //this.props.history.push(`/details/${parentId}`);
-    this.props.history.push(`/`);
+    this.props.history.goBack()
+    //this.props.history.push(`/$(category)/${parentId}`);
+    //this.props.history.push(`/`);
  }
   render() {
     console.log("NewComment props",this.props)
     return (
-      <NewCommentForm className= 'container' testdata ='DFD445' submitForm={this.submit} />
+      <NewCommentForm className= 'container' submitForm={this.submit} />
     );
   }
 }

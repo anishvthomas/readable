@@ -24,9 +24,9 @@ class PostDetail extends Component {
         <div className='container postdetail'>
 
             <h1>{this.props.currentpost && this.props.currentpost.title}</h1>
-            <span>by {this.props.currentpost && this.props.currentpost.author}
-              on {this.props.currentpost && new Date(this.props.currentpost.timestamp).toString()}
-             in {this.props.currentpost && this.props.currentpost.category}</span>
+            <span > by {this.props.currentpost && this.props.currentpost.author}</span>
+             <span>  on {this.props.currentpost && new Date(this.props.currentpost.timestamp).toString()}</span>
+            <span> in {this.props.currentpost && this.props.currentpost.category}</span>
             <p>{this.props.currentpost && this.props.currentpost.body} </p>
 
             <button className="btn btn-skyblue"><i className="fa fa-thumbs-o-up"></i>{this.props.currentpost && this.props.currentpost.voteScore}</button>
@@ -36,7 +36,7 @@ class PostDetail extends Component {
               </button>
 
             {<Comments />}
-            <Link to={`/create/comment/${this.props.postid}`}>  <Button  bsStyle="primary"> Post a Comment</Button>  </Link>
+            <Link to={`/create/comment/${this.props.postid}`} >  <Button  bsStyle="primary"> Post a Comment</Button>  </Link>
 
         </div>
     )}
@@ -45,7 +45,7 @@ class PostDetail extends Component {
 
 function mapStateToProps(state,ownprops){
     const postid = ownprops.match.params.postid;
-
+    const category=ownprops.match.params.categories
     console.log('PostDetail====>state',state)
     console.log('PostDetail=====>ownprops',ownprops)
     //console.log('=====>state.posts.currentPost',state.posts.currentPost)
@@ -53,7 +53,8 @@ function mapStateToProps(state,ownprops){
     return {
         postid: postid,
         currentpost:state.posts.currentPost,
-        comments: state.comments
+        comments: state.comments,
+        category:category,
     }
 }
 function mapDispatchToProps (dispatch) {

@@ -16,8 +16,11 @@ class Categories extends Component {
         console.log("Categories:categories ",categories)
         return (
         <div className="categorylist">
-        {categories.length && (categories.map(item=><Link to={`/category/list/${item.path}`}>  {item.name}  </Link>))}
+        <Link to='/'>  Home  </Link>
+        {categories.length && (categories.map(item=><Link to={`/category/list/${item.path}`} key={item.path}>  {item.name}  </Link>))}
 
+        <Link to={"/create/new/post"}>  New Post  </Link>
+        <hr/>
         </div>
     )
 }

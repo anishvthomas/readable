@@ -37,7 +37,7 @@ export default function posts(state=initialState,action) {
     switch (action.type) {
         case RECEIVE_ALL_POSTS: return {
             ...state,
-            posts:action.posts.filter((postItem) => postItem.deleted === false)
+            posts:action.posts.filter((postItem) => postItem.deleted === false).sort(sortBy('-voteScore'))
             }
         case RECEIVE_SINGLE_POST: return {
             ...state,

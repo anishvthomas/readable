@@ -37,8 +37,6 @@ export const fetchAllComments = (postid) => dispatch => (
     .then(comments => dispatch(receiveComments(comments)))
 );
 
-export const RECEIVE_SINGLE_COMMENT = 'RECEIVE_SINGLE_COMMENT'
-
 export const ADD_POST = 'ADD_POST'
 
 export const addPost = postData => ({
@@ -148,7 +146,17 @@ export const loadFormData = (data) => dispatch => {
     console.log('loadFormData&&&&&&&&&&&&&&&&&')
     dispatch(loadForm(data))
 };
+export const LOAD_COMMENT_FORMDATA = 'LOAD_COMMENT_FORMDATA'
 
+export const loadCommentForm = data => (
+{ type: LOAD_COMMENT_FORMDATA,
+    data
+}
+)
+export const loadCommentFormData = (data) => dispatch => {
+    console.log('loadCommentFormData&&&&&&&&&&&&&&&&&')
+    dispatch(loadCommentForm(data))
+};
 
 
 
@@ -163,4 +171,29 @@ export const updateExistingPost = (postData) => dispatch => {
     console.log('updateExistingPost',postData)
     API.APIupdatePost(postData)
     .then((postData) => dispatch(updatePost(postData)))
+};
+
+export const RECEIVE_SINGLE_COMMENT = 'RECEIVE_SINGLE_COMMENT'
+
+export const receiveSingleComment = comment => ({
+type: RECEIVE_SINGLE_COMMENT,
+comment
+});
+
+export const fetchSingleComment = (commentid) => dispatch => (
+    API.APIgetSingleComment(commentid)
+    .then(comment => dispatch(receiveSingleComment(comment)))
+);
+
+export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+
+export const updateComment = commentData => ({
+type: UPDATE_COMMENT,
+commentData
+});
+
+export const updateExistingComment = (commentData) => dispatch => {
+    console.log('updateExistingComment',commentData)
+    API.APIupdateComment(commentData)
+    .then((postData) => dispatch(updateComment(commentData)))
 };
