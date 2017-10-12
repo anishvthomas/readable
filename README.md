@@ -10,8 +10,11 @@ Users will be able to *post content* to predefined categories, *comment* on thei
 ## Usage
 
 **1.Backend server**
+
 Git clone https://github.com/udacity/reactnd-project-readable-starter.git server inside of the main repo
+
 *cd server*
+
 To install and start the API server, run the following commands in this directory:
 
 Use *npm install* to install
