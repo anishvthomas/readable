@@ -12,9 +12,6 @@ class EditPostForm extends Component
     }
 render()
 {  const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
-  //console.log('EditPostForm: categories:', this.props.categories.length ? this.props.categories.map(categoryOption => categoryOption.name):"")
-  //const { handleSubmit } = this.props;
-  console.log('EditPostForm:render',this.props.categ.categories)
   return (
       <div className='container app'>
       <h1> Edit a topic </h1>
@@ -87,17 +84,9 @@ EditPostForm = reduxForm({
 })(EditPostForm)
 
 function mapStateToProps(state,ownprops){
-    //const postid = ownprops.match.params.postid;
-
-    console.log('EditPostForm====>state',state)
-    //console.log('PostDetail=====>ownprops',ownprops)
-    //console.log('=====>state.posts.currentPost',state.posts.currentPost)
-    //console.log('=====>state.posts.comments',state.posts.comments)
     return {
-        //postid: postid,
         initialValues:state.posts.currentPost,
         categ:state.categories
-
     }
 }
 function mapDispatchToProps (dispatch) {

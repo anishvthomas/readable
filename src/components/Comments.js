@@ -17,8 +17,6 @@ class Comments extends Component {
     render ()
 {
     const {allComments}= this.props
-    console.log("Comments:props.allComments=> ",this.props.allComments)
-    console.log("Comments:posts allComments ",allComments)
 
     return (
         <div className='container posts'>
@@ -58,14 +56,7 @@ class Comments extends Component {
     )}
 }
 function mapStateToProps(state,ownprops){
-    //const postid = ownprops.match.params.postid;
-
-    console.log('Comments====>state',state)
-    console.log('Comments=====>ownprops',ownprops)
-    //console.log('=====>state.posts.currentPost',state.posts.currentPost)
-    //console.log('=====>state.posts.comments',state.posts.comments)
     return {
-    //    postid: postid,
         currentpost:state.posts.currentPost,
         allComments: state.comments
     }

@@ -14,9 +14,8 @@ class EditComment extends React.Component {
     formValue['id']=this.props.commentid
     formValue['author']=values.author
     formValue['body']=values.body
-    console.log('EditComment enchanced',formValue);
     this.props.updateComment(formValue)
-    this.props.history.push(`/`);
+    this.props.history.goBack()
 
  }
  componentDidMount=()=> {
@@ -37,11 +36,6 @@ class EditComment extends React.Component {
 
 function mapStateToProps(state,ownprops){
     const commentid = ownprops.match.params.commentid;
-
-    console.log('EditComment====>state',state)
-    console.log('EditComment=====>ownprops',ownprops)
-    //console.log('=====>state.posts.currentPost',state.posts.currentPost)
-    //==console.log('=====>commentid',commentid)
     return {
         commentid:commentid,
 

@@ -3,18 +3,14 @@ if (!token)
   token = localStorage.token = Math.random().toString(36).substr(-8)
 
   export const APIgetCategories = () => {
-      console.log("APIgetCategories",token)
     return fetch('http://localhost:5001/categories', {
           headers: { Authorization: token }
         })
-          .then((res) => { console.log("fetch localhost:5001/categories",res)
-              return res.json()})
-          .then(data => {  console.log("fetch localhost:5001/categories:d => ",data)
-              return data.categories})
+        .then((res) => res.json())
+        .then(data =>  data.categories)
   }
 
   export const APIgetComments = () => {
-      console.log("APIgetComments")
     return fetch('http://localhost:5001/categories', {
           headers: { Authorization: token }
         })
@@ -24,115 +20,88 @@ if (!token)
 
 
   export const APIgetPosts = () => {
-      console.log("APIgetPosts",token)
     return fetch('http://localhost:5001/posts', {
           headers: { Authorization: token }
         })
-          .then((res) => { console.log("fetch localhost:5001/posts",res)
-              return res.json()})
-          .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-              return data})
+          .then((res) => res.json())
+          .then(data =>  data)
   }
 
   export const APIaddNewPost = (postData) => {
-      console.log("$$$$$$$$$$$APIaddNewPost",postData)
       return fetch('http://localhost:5001/posts', {
         headers: { Authorization: token ,
                     'Content-Type': "application/json"
                     },
         method: 'POST',
         body: JSON.stringify(postData)})
-        .then((res) => { console.log("fetch localhost:5001/posts",res)
-              return res.json()})
-        .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-              return data})
+        .then((res) => res.json())
+        .then(data =>  data)
 
   }
 
 export const APIupdatePost = (postData) => {
-    console.log("$$$$$$$$$$$APIupdatePost",postData)
     return fetch(`http://localhost:5001/posts/${postData.id}`, {
       headers: { Authorization: token ,
                   'Content-Type': "application/json"
                   },
       method: 'PUT',
       body: JSON.stringify(postData)})
-      .then((res) => { console.log("fetch localhost:5001/posts",res)
-            return res.json()})
-      .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 
 }
 
 export const APIgetSinglePost = (postid) => {
-    console.log("APIgetSinglePost",postid)
-  return fetch(`http://localhost:5001/posts/${postid}`, {
+ return fetch(`http://localhost:5001/posts/${postid}`, {
         headers: { Authorization: token }
       })
-        .then((res) => { console.log("fetch localhost:5001/posts",res)
-            return res.json()})
-        .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 }
 
 export const APIgetCommentsForPost = (postid) => {
-    console.log("APIgetCommentsForPost",postid)
-  return fetch(`http://localhost:5001/posts/${postid}/comments`, {
+ return fetch(`http://localhost:5001/posts/${postid}/comments`, {
         headers: { Authorization: token }
       })
-        .then((res) => { console.log("fetch localhost:5001/postid/comment",res)
-            return res.json()})
-        .then(data => { console.log("fetch localhost:5001/postid/comment.comments => ",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 }
 
 export const APIaddNewComment = (commentData) => {
-    console.log("$$$$$$$$$$$APIaddNewComment",commentData)
     return fetch('http://localhost:5001/comments', {
       headers: { Authorization: token ,
                   'Content-Type': "application/json"
                   },
       method: 'POST',
       body: JSON.stringify(commentData)})
-      .then((res) => { console.log("fetch localhost:5001/posts",res)
-            return res.json()})
-      .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 
 }
 
 export const APIupdateVotes = (voteData) => {
-    console.log("$$$$$$$$$$$APIupdateVotes:voteData",voteData)
     const voteOption = {'option': voteData.option }
-    console.log("$$$$$$$$$$$APIupdateVotes: option",voteOption)
     return fetch(`http://localhost:5001/posts/${voteData.postid}`, {
       headers: { Authorization: token ,
                   'Content-Type': "application/json"
                   },
       method: 'POST',
       body: JSON.stringify(voteOption)})
-      .then((res) => { console.log("fetch localhost:5001/posts",res)
-            return res.json()})
-      .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-            return data})
-
+      .then((res) => res.json())
+      .then(data =>  data)
 }
 
 
 export const APIupdateCommentVotes = (voteData) => {
-    console.log("$$$$$$$$$$$APIupdateVotes:voteData",voteData)
     const voteOption = {'option': voteData.option }
-    console.log("$$$$$$$$$$$APIupdateVotes: option",voteOption)
     return fetch(`http://localhost:5001/comments/${voteData.commentid}`, {
       headers: { Authorization: token ,
                   'Content-Type': "application/json"
                   },
       method: 'POST',
       body: JSON.stringify(voteOption)})
-      .then((res) => { console.log("fetch localhost:5001/posts",res)
-            return res.json()})
-      .then(data => { console.log("fetch localhost:5001/posts:d.posts => ",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 
 }
 
@@ -157,47 +126,23 @@ export const APIdeletePost = (postid) => {
 
 }
 
-/*export const APIdeletePost = (postid) => {
-    console.log("APIdeletePost",postid)
-    return fetch(`http://localhost:5001/posts/${postid}`, {
-      headers: { Authorization: token ,
-                  'Content-Type': "application/json"
-                  },
-      method: 'DELETE'})
-      .then((res) => { console.log("fetch localhost:5001/posts res->",res)
-            return res.json()})
-      .then(data => { console.log("fetch localhost:5001/posts data-> => ",data)
-            return data})
-     .catch(error => console.log('APIdeletePosterror', error));
-
-}*/
-
-
-
 export const APIgetSingleComment = (commentid) => {
-    console.log("APIgetSingleComment",commentid)
   return fetch(`http://localhost:5001/comments/${commentid}`, {
         headers: { Authorization: token }
       })
-        .then((res) => { console.log("fetch localhost:5001/posts",res)
-            return res.json()})
-        .then(data => { console.log("APIgetSingleComment******** => ",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 }
 
 
 export const APIupdateComment = (commentData) => {
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@APIupdateComment",commentData)
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@APIupdateComment",`http://localhost:5001/comments/${commentData.id}`)
     return fetch(`http://localhost:5001/comments/${commentData.id}`, {
       headers: { Authorization: token ,
                   'Content-Type': "application/json"
                   },
       method: 'PUT',
       body: JSON.stringify(commentData)})
-      .then((res) => { console.log("@@@@@@@@@@@@========APIupdateComment res",res)
-            return res.json()})
-      .then(data => { console.log("@@@@@@@@@@@@========APIupdateComment data",data)
-            return data})
+      .then((res) => res.json())
+      .then(data =>  data)
 
 }

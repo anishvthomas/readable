@@ -1,5 +1,5 @@
 import sortBy from 'sort-by';
-import { RECEIVE_ALL_COMMENTS, RECEIVE_SINGLE_COMMENT ,UPDATE_COMMENT_VOTESCORE,
+import { RECEIVE_COMMENTS, RECEIVE_SINGLE_COMMENT ,UPDATE_COMMENT_VOTESCORE,
     DELETE_COMMENT, LOAD_COMMENT_FORMDATA, UPDATE_COMMENT} from '../actions'
 const initialState ={
     comments:[],
@@ -10,8 +10,6 @@ const initialState ={
 const updatedCommentsWithVoteChanges = (state,action) => {
     const indexOfUpdatedComment = state.comments.findIndex((commentItem) => {
       return commentItem.id === action.voteData.id; });
-      console.log('indexOfUpdatedCommentaction.voteData.id',action.voteData.id)
-      console.log('indexOfUpdatedComment',indexOfUpdatedComment)
     if( indexOfUpdatedComment >= 0 )
         return {...state,
                 ...state.comments[indexOfUpdatedComment].voteScore=action.voteData.voteScore }
@@ -19,11 +17,8 @@ const updatedCommentsWithVoteChanges = (state,action) => {
         return state
 }
 const updatedCommentsWithStatusChanges = (state,action) => {
-    console.log('updatedPostsWithStatusChanges:action count: ',state.comments.length)
     const indexOfDeletedComment = state.comments.findIndex((commentItem) => {
       return commentItem.id === action.comment; });
-     // console.log('indexOfDeletedPost:action',action)
-     // console.log('indexOfDeletedPost',indexOfDeletedPost)
     if( indexOfDeletedComment >= 0 )
         return {...state,
                 ...state.comments[indexOfDeletedComment].deleted=true }
@@ -31,11 +26,8 @@ const updatedCommentsWithStatusChanges = (state,action) => {
         return state
 }
 const updatedCommentsWithChanges = (state,action) => {
-    console.log('updatedCommentsWithChanges:action count: ',state.comments.length)
     const indexOfUpdatedComment = state.comments.findIndex((commentItem) => {
       return commentItem.id === action.comment; });
-     // console.log('indexOfDeletedPost:action',action)
-     // console.log('indexOfDeletedPost',indexOfDeletedPost)
     if( indexOfUpdatedComment >= 0 )
         return {...state,
                 ...state.comments[indexOfUpdatedComment]=action.comment }
@@ -44,10 +36,8 @@ const updatedCommentsWithChanges = (state,action) => {
 }
 
 export default function comments(state=initialState,action) {
-    console.log(" comments:reducer ****action:",action)
-    //console.log("categories:reducer ****state:",state)
     switch (action.type) {
-        case RECEIVE_ALL_COMMENTS: return {
+        case RECEIVE_COMMENTS: return {
             ...state,
             comments:action.comments.sort(sortBy('-voteScore'))
             }

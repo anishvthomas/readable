@@ -4,19 +4,11 @@ import Posts from './Posts'
 import {Link} from 'react-router-dom'
 
  const Home =(props) => {
-    console.log("Home",props)
     const { categories, posts } = props.data
-
-    console.log("Home: categories",categories)
-    console.log("Home: posts",posts)
     return (
 
         <div className='container'>
-        {/*<Categories categorylist={categories}/>*/}
-        
-        {console.log("Home:postlength: ",posts.posts.length)}
         {posts.posts.length && <Posts category=""/>}
-        {/*posts.posts.length && <Posts allPosts={posts.posts}/>*/}
         </div>
     )
 }

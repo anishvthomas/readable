@@ -4,16 +4,11 @@ import {Link} from 'react-router-dom'
 class NewCommentForm extends Component  {
     handleSubmit =(e) => {
         e.preventDefault()
-        console.log(' NewCommentForme',e)
         const author = this.authorInput.value
-        console.log('author',author)
         const body = this.bodyInput.value
-        console.log('body',body)
         const values = {author,
         body}
-        console.log('NewCommentForm this.props',this.props)
         this.props.submitForm(values)
-    
     }
 
 
@@ -21,7 +16,6 @@ class NewCommentForm extends Component  {
         return (
             <div className='container app'>
                 <h1> Post a Comment </h1>
-                {/*<Link to={`/${category}/${parentId}`}>Close</Link>*/}
                 <form className="form-horizontal" onSubmit={this.handleSubmit}>
                     <div className='form-group row'>
                         <label className='col-2 control-label'>Author</label>

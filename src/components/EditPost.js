@@ -12,7 +12,7 @@ class EditPost extends React.Component {
     values['timestamp']=Date.now()
     values['id']=this.props.postid
     values['voteScore']= this.props.currentpost.voteScore
-    console.log('NewPost enchanced',values);
+
     this.props.updatePost(values)
     this.props.history.push(`/`);
 
@@ -35,11 +35,6 @@ class EditPost extends React.Component {
 
 function mapStateToProps(state,ownprops){
     const postid = ownprops.match.params.postid;
-
-    console.log('PostDetail====>state',state)
-    console.log('PostDetail=====>ownprops',ownprops)
-    //console.log('=====>state.posts.currentPost',state.posts.currentPost)
-    //console.log('=====>state.posts.comments',state.posts.comments)
     return {
         postid: postid,
         currentpost:state.posts.currentPost,

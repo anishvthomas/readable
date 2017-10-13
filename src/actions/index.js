@@ -25,18 +25,30 @@ export const fetchPosts = () => dispatch => (
     .then(posts => dispatch(receiveAllPosts(posts)))
 );
 
-export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS'
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 
 export const receiveComments = comments => ({
-type: RECEIVE_ALL_COMMENTS,
+type: RECEIVE_COMMENTS,
 comments
 });
 
-export const fetchAllComments = (postid) => dispatch => (
+export const  fetchComments= (postid) => dispatch => (
     API.APIgetCommentsForPost(postid)
     .then(comments => dispatch(receiveComments(comments)))
 );
+//
 
+export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS'
+
+export const receiveAllComments = comments => ({
+type: RECEIVE_ALL_COMMENTS,
+comments
+});
+export const  fetchAllComments= (postList) => dispatch => (
+    postList.forEach((postid)=>{ API.APIgetCommentsForPost(postid)
+    .then(comments => dispatch(receiveAllComments(comments)))})
+
+);
 export const ADD_POST = 'ADD_POST'
 
 export const addPost = postData => ({
@@ -45,9 +57,9 @@ postData
 });
 
 export const addNewPost = (postData) => dispatch => {
-    console.log('addNewPost')
+    console.log('++++++++++++++addNewPost')
     API.APIaddNewPost(postData)
-    .then((postData) => dispatch(addPost(addNewPost)))
+    .then((postData) => dispatch(addPost(postData)))
 };
 
 export const ADD_COMMENT = 'ADD_COMMENT'

@@ -6,14 +6,10 @@ import { Button } from 'react-bootstrap'
 class Categories extends Component {
 
     componentDidMount() {
-    //console.log("Categories:componentDidMount")
-    //console.log("Categories:componentDidMount this.props.categorylist ",this.props.categorylist)
 
     }
     render() {
         const { categories } = this.props.categorylist
-        console.log("^^^^^^sCategories:this.props ",this.props)
-        console.log("Categories:categories ",categories)
         return (
         <div className="categorylist">
         <Link to='/'>  Home  </Link>

@@ -7,20 +7,20 @@ import { connect } from 'react-redux'
 
 class EditCommentForm extends Component
 {
-    componentDidMount=()=> {
-            this.props.load()
+    componentWillMount=()=> {
+            console.log('EditCommentForm:componentWillMount calling load',this.props)
+
+            this.props.load(this.props.data)
 
     }
 render()
-{  const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
-  //console.log('EditPostForm: categories:', this.props.categories.length ? this.props.categories.map(categoryOption => categoryOption.name):"")
-  //const { handleSubmit } = this.props;
-  console.log('EditCommentForm:render',this.props.categ.categories)
-  return (
+{
+    const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
+    console.log('EditCommentForm:render',this.props)
+    return (
       <div className='container app'>
       <h1> Edit Comment </h1>
-
-        <form className='form-horizontal' onSubmit={handleSubmit}>
+         <form className='form-horizontal' onSubmit={handleSubmit}>
             <div className='form-group'>
                 <label className='col-2 control-label' for="author">Author</label>
                 <div className='col-10'>
@@ -47,21 +47,16 @@ render()
 
 // Decorate with reduxForm(). It will read the initialValues prop provided by connect()
 EditCommentForm = reduxForm({
-  form: 'submitEditComment' // a unique identifier for this form
+  form: 'submitEditComment', // a unique identifier for this form
+  enableReinitialize : true
 })(EditCommentForm)
 
 function mapStateToProps(state,ownprops){
-    //const postid = ownprops.match.params.postid;
-
-    console.log('EditCommentForm====>state',state)
-    //console.log('PostDetail=====>ownprops',ownprops)
-console.log('=====>state.comments.currentComment',state.comments.currentComment)
-    //console.log('=====>state.posts.comments',state.posts.comments)
+    console.log('EditCommentForm====>mapStateToProps->state',state)
+    console.log('EditCommentForm====>mapStateToProps>state.comments.currentComment',state.comments.currentComment)
     return {
-        //postid: postid,
         initialValues:state.comments.currentComment,
         categ:state.categories
-
     }
 }
 function mapDispatchToProps (dispatch) {

@@ -9,7 +9,7 @@ import EditPost  from './components/EditPost'
 import PostDetail  from './components/PostDetail'
 import NewComment  from './components/NewComment'
 import EditComment  from './components/EditComment'
-import { fetchCategories, fetchPosts } from './actions'
+import { fetchCategories, fetchPosts , fetchComments} from './actions'
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import './App.css'
@@ -19,6 +19,7 @@ class App extends Component {
         this.props.loadCategories()
         this.props.loadAllPosts()
     }
+
     render() {
         console.log("App render props",this.props.categories)
     return (
@@ -43,14 +44,6 @@ class App extends Component {
 }
 function mapStateToProps(state){
     const {categories, posts}= state
-    console.log("mapStateToProps state",state)
-    console.log("mapStateToProps categories",categories)
-    console.log("mapStateToProps posts",posts)
-    //console.log("mapStateToProps category",categories.map(item=>item.name+" "+item.path))
-    //console.log("categories.reduce",categories.reduce((accum,item)=>  {accum[item.name]=item.path
-    //return accum},{}))
-    //console.log("mapStateToProps Object.keys(state.category)",Object.keys(state.category))
-
     return {
         categories: categories,
         posts: posts,
@@ -60,6 +53,7 @@ function mapDispatchToProps (dispatch) {
   return {
     loadCategories: () => dispatch(fetchCategories()),
     loadAllPosts: () => dispatch(fetchPosts()),
+    loadAllComments: () => dispatch(fetchComments()),
 
   }
 }
