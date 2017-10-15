@@ -1,14 +1,12 @@
 import React from 'react'
-import Categories from './Categories'
 import Posts from './Posts'
-import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
  const Category =(props) => {
-    const {  posts ,categories} = props
+    const {  posts } = props
     return (
 
         <div className='container'>
-        {console.log("Home:postlength: ",posts.length)}
+
         {posts.length && <Posts category={props.category}/>}
         </div>
     )

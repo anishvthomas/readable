@@ -1,7 +1,9 @@
 import * as API from '../utils/api.js'
-
-
-export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'
+import { RECEIVE_CATEGORIES, RECEIVE_ALL_POSTS, RECEIVE_COMMENTS,
+  ADD_POST, ADD_COMMENT, RECEIVE_SINGLE_POST, UPDATE_VOTESCORE,
+  UPDATE_COMMENT_VOTESCORE, SORT_POSTS, DELETE_COMMENT, LOAD_FORMDATA,
+  LOAD_COMMENT_FORMDATA, UPDATE_POST, RECEIVE_SINGLE_COMMENT, UPDATE_COMMENT,
+  RECEIVE_ALL_COMMENTS, DELETE_POST } from './types'
 
 export const receiveCategories = categories => ({
 type: RECEIVE_CATEGORIES,
@@ -13,8 +15,6 @@ export const fetchCategories = () => dispatch => (
     .then(categories => dispatch(receiveCategories(categories)))
 );
 
-export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS'
-
 export const receiveAllPosts = posts => ({
 type: RECEIVE_ALL_POSTS,
 posts
@@ -25,7 +25,6 @@ export const fetchPosts = () => dispatch => (
     .then(posts => dispatch(receiveAllPosts(posts)))
 );
 
-export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 
 export const receiveComments = comments => ({
 type: RECEIVE_COMMENTS,
@@ -38,7 +37,6 @@ export const  fetchComments= (postid) => dispatch => (
 );
 //
 
-export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS'
 
 export const receiveAllComments = comments => ({
 type: RECEIVE_ALL_COMMENTS,
@@ -49,7 +47,6 @@ export const  fetchAllComments= (postList) => dispatch => (
     .then(comments => dispatch(receiveAllComments(comments)))})
 
 );
-export const ADD_POST = 'ADD_POST'
 
 export const addPost = postData => ({
 type: ADD_POST,
@@ -57,12 +54,11 @@ postData
 });
 
 export const addNewPost = (postData) => dispatch => {
-    console.log('++++++++++++++addNewPost')
+
     API.APIaddNewPost(postData)
     .then((postData) => dispatch(addPost(postData)))
 };
 
-export const ADD_COMMENT = 'ADD_COMMENT'
 
 export const addComment = commentData => ({
 type: ADD_COMMENT,
@@ -70,12 +66,11 @@ commentData
 });
 
 export const addNewComment = (commentData) => dispatch => {
-    console.log('addNewComment')
+
     API.APIaddNewComment(commentData)
     .then((postData) => dispatch(addComment(postData)))
 };
 
-export const RECEIVE_SINGLE_POST = 'RECEIVE_SINGLE_POST'
 
 export const receiveSinglePost = post => ({
 type: RECEIVE_SINGLE_POST,
@@ -87,7 +82,6 @@ export const fetchSinglePost = (postid) => dispatch => (
     .then(post => dispatch(receiveSinglePost(post)))
 );
 
-export const UPDATE_VOTESCORE = 'UPDATE_VOTESCORE'
 
 export const updateVotescore = voteData => ({
 type: UPDATE_VOTESCORE,
@@ -95,11 +89,10 @@ voteData
 });
 
 export const updateVotes = (voteData) => dispatch => {
-    console.log('voteData')
+
     API.APIupdateVotes(voteData)
     .then((voteData) => dispatch(updateVotescore(voteData)))
 };
-export const UPDATE_COMMENT_VOTESCORE = 'UPDATE_COMMENT_VOTESCORE'
 
 export const updateCommentVotescore = voteData => ({
 type: UPDATE_COMMENT_VOTESCORE,
@@ -107,12 +100,11 @@ voteData
 });
 
 export const updateCommentVotes = (voteData) => dispatch => {
-    console.log('voteData')
+
     API.APIupdateCommentVotes(voteData)
     .then((voteData) => dispatch(updateCommentVotescore(voteData)))
 };
 
-export const SORT_POSTS = 'SORT_POSTS'
 
 export const sortPosts = columnName => ({
 type: SORT_POSTS,
@@ -120,11 +112,10 @@ columnName
 });
 
 export const sortData = (columnName) => dispatch => {
-    console.log('sortData&&&&&&&&&&&&&&&&&')
+
  dispatch(sortPosts(columnName))
 };
 
-export const DELETE_POST = 'DELETE_POST'
 
 export const deleteSinglePost = post => ({
 type: DELETE_POST,
@@ -136,7 +127,6 @@ export const deletePost = (postid) => dispatch => (
     .then(post => dispatch(deleteSinglePost(post)))
 );
 
-export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 export const deleteSingleComment = comment => ({
 type: DELETE_COMMENT,
@@ -148,17 +138,15 @@ export const deleteComment = (commentid) => dispatch => (
     .then(comment => dispatch(deleteSingleComment(comment)))
 );
 
-export const LOAD_FORMDATA = 'LOAD_FORMDATA'
 
 export const loadForm = data => (
 { type: LOAD_FORMDATA,
     data }
 )
 export const loadFormData = (data) => dispatch => {
-    console.log('loadFormData&&&&&&&&&&&&&&&&&')
+
     dispatch(loadForm(data))
 };
-export const LOAD_COMMENT_FORMDATA = 'LOAD_COMMENT_FORMDATA'
 
 export const loadCommentForm = data => (
 { type: LOAD_COMMENT_FORMDATA,
@@ -166,13 +154,9 @@ export const loadCommentForm = data => (
 }
 )
 export const loadCommentFormData = (data) => dispatch => {
-    console.log('loadCommentFormData&&&&&&&&&&&&&&&&&')
+
     dispatch(loadCommentForm(data))
 };
-
-
-
-export const UPDATE_POST = 'UPDATE_POST'
 
 export const updatePost = postData => ({
 type: UPDATE_POST,
@@ -180,12 +164,11 @@ postData
 });
 
 export const updateExistingPost = (postData) => dispatch => {
-    console.log('updateExistingPost',postData)
+
     API.APIupdatePost(postData)
     .then((postData) => dispatch(updatePost(postData)))
 };
 
-export const RECEIVE_SINGLE_COMMENT = 'RECEIVE_SINGLE_COMMENT'
 
 export const receiveSingleComment = comment => ({
 type: RECEIVE_SINGLE_COMMENT,
@@ -197,7 +180,6 @@ export const fetchSingleComment = (commentid) => dispatch => (
     .then(comment => dispatch(receiveSingleComment(comment)))
 );
 
-export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 
 export const updateComment = commentData => ({
 type: UPDATE_COMMENT,
@@ -205,7 +187,7 @@ commentData
 });
 
 export const updateExistingComment = (commentData) => dispatch => {
-    console.log('updateExistingComment',commentData)
+
     API.APIupdateComment(commentData)
     .then((postData) => dispatch(updateComment(commentData)))
 };

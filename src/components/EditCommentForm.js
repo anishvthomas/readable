@@ -16,7 +16,6 @@ class EditCommentForm extends Component
 render()
 {
     const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
-    console.log('EditCommentForm:render',this.props)
     return (
       <div className='container app'>
       <h1> Edit Comment </h1>
@@ -52,8 +51,6 @@ EditCommentForm = reduxForm({
 })(EditCommentForm)
 
 function mapStateToProps(state,ownprops){
-    console.log('EditCommentForm====>mapStateToProps->state',state)
-    console.log('EditCommentForm====>mapStateToProps>state.comments.currentComment',state.comments.currentComment)
     return {
         initialValues:state.comments.currentComment,
         categ:state.categories

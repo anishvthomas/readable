@@ -1,4 +1,4 @@
-import { RECEIVE_CATEGORIES } from '../actions'
+import { RECEIVE_CATEGORIES } from '../actions/types.js'
 const initialState ={
     categories:[],
 }

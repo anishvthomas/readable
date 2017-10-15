@@ -19,7 +19,7 @@ class NewComment extends React.Component {
   render() {
 
     return (
-      <NewCommentForm className= 'container' submitForm={this.submit} />
+      <NewCommentForm className= 'container' submitForm={this.submit} history={this.props.history}/>
     );
   }
 }

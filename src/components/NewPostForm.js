@@ -10,18 +10,18 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
     </div>
   </div>
 );
+const required = value => value ? undefined : 'Required'
 
 const NewPostForm = props => {
-console.log('NewPostForm****************',props)
 const { error, handleSubmit, pristine, reset, submitting } = props;
   //const { handleSubmit } = this.props;
   return (
       <div className='container app'>
       <h1> Post a topic </h1>
     <form className="form-horizontal" onSubmit={handleSubmit}>
-    <Field name="author" type="text" component={renderField} label="Author" />
-    <Field name="title" type="text" component={renderField} label="Title"/>
-    <Field name="body" type="textarea" component={renderField} label="Body" />
+    <Field name="author" type="text" component={renderField} label="Author" validate= {required}/>
+    <Field name="title" type="text" component={renderField} label="Title" validate= {required}/>
+    <Field name="body" type="textarea" component={renderField} label="Body" validate= {required}/>
     {/*<Field name="category" type="text" component={renderField} label="Category"/>*/}
     <div className='form-group'>
       <label htmlFor="category" className="col-sm-2">Category</label>

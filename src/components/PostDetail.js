@@ -13,9 +13,7 @@ class PostDetail extends Component {
 
     }
     render () {
-
         const {comments} =this.props.comments
-        const { currentpost}=this.props
         if(this.props.currentpost && this.props.currentpost.title===undefined)
         {
             return (
@@ -40,7 +38,7 @@ class PostDetail extends Component {
               <button className="btn btn-skyblue" onClick={()=>this.props.history.goBack()}>
                 <i className="fa fa-reply"></i> Go Back
               </button>
-              <p>Comments :{comments.length} </p>
+              <p>Comments :{comments.filter((commentItem) => commentItem.deleted === false).length} </p>
             {<Comments />}
             <Link to={`/create/comment/${this.props.postid}`} >  <Button  bsStyle="primary"> Post a Comment</Button>  </Link>
 

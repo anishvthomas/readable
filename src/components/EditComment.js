@@ -2,7 +2,6 @@ import React from 'react'
 import EditCommentForm from './EditCommentForm';
 import { updateExistingComment } from '../actions'
 import { connect } from 'react-redux'
-import uuid from 'uuid/v1'
 import { fetchSingleComment } from '../actions'
 
 class EditComment extends React.Component {

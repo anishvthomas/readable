@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import './NewPostForm.css'
-import {Link} from 'react-router-dom'
+
 class NewCommentForm extends Component  {
     handleSubmit =(e) => {
         e.preventDefault()
@@ -13,6 +13,7 @@ class NewCommentForm extends Component  {
 
 
     render () {
+        console.log("this.props",this.props)
         return (
             <div className='container app'>
                 <h1> Post a Comment </h1>
@@ -34,6 +35,7 @@ class NewCommentForm extends Component  {
                     </div>
 
                     <button  className="btn btn-success">Submit</button>
+                    <button  className="btn btn-danger" onClick={()=>this.props.history.goBack()}>Cancel</button>
 
                 </form>
             </div>

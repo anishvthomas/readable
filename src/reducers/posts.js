@@ -1,6 +1,6 @@
 import sortBy from 'sort-by';
 import { RECEIVE_ALL_COMMENTS, RECEIVE_ALL_POSTS, RECEIVE_SINGLE_POST, UPDATE_VOTESCORE,SORT_POSTS ,DELETE_POST,
-    LOAD_FORMDATA,UPDATE_POST, ADD_POST} from '../actions'
+    LOAD_FORMDATA,UPDATE_POST, ADD_POST} from '../actions/types'
 const initialState ={
     posts:[],
     currentPost:null

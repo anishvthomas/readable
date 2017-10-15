@@ -1,10 +1,8 @@
 import React from 'react'
-import Categories from './Categories'
 import Posts from './Posts'
-import {Link} from 'react-router-dom'
 
  const Home =(props) => {
-    const { categories, posts } = props.data
+    const { posts } = props.data
     return (
 
         <div className='container'>

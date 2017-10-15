@@ -1,6 +1,6 @@
 import sortBy from 'sort-by';
 import { RECEIVE_COMMENTS, RECEIVE_SINGLE_COMMENT ,UPDATE_COMMENT_VOTESCORE,
-    DELETE_COMMENT, LOAD_COMMENT_FORMDATA, UPDATE_COMMENT} from '../actions'
+    DELETE_COMMENT, LOAD_COMMENT_FORMDATA, UPDATE_COMMENT} from '../actions/types'
 const initialState ={
     comments:[],
     currentComment:null,
@@ -21,7 +21,8 @@ const updatedCommentsWithStatusChanges = (state,action) => {
       return commentItem.id === action.comment; });
     if( indexOfDeletedComment >= 0 )
         return {...state,
-                ...state.comments[indexOfDeletedComment].deleted=true }
+                ...state.comments[indexOfDeletedComment].deleted=true,
+ }
     else
         return state
 }
@@ -39,7 +40,7 @@ export default function comments(state=initialState,action) {
     switch (action.type) {
         case RECEIVE_COMMENTS: return {
             ...state,
-            comments:action.comments.sort(sortBy('-voteScore'))
+            comments:action.comments.filter(( comment ) => comment.deleted===false ).sort(sortBy('-voteScore'))
             }
         case RECEIVE_SINGLE_COMMENT: return {
             ...state,
