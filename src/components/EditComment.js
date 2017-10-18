@@ -8,7 +8,7 @@ class EditComment extends React.Component {
   submit = (values) => {
     let formValue={}
     // Do something with the form values
-    console.log('EditComment',values);
+    
     formValue['timestamp']=Date.now()
     formValue['id']=this.props.commentid
     formValue['author']=values.author
@@ -23,7 +23,7 @@ class EditComment extends React.Component {
 
  }
   render() {
-    
+
     return (
       <EditCommentForm class= 'container' onSubmit={this.submit} data={this.props.commentid}/>
     );

@@ -18,14 +18,14 @@ class EditCommentForm extends Component
           <h1> Edit Comment </h1>
              <form className='form-horizontal' onSubmit={handleSubmit}>
                 <div className='form-group'>
-                    <label className='col-2 control-label' for="author">Author</label>
+                    <label className='col-2 control-label' htmlFor="author">Author</label>
                     <div className='col-10'>
                         <Field name="author" className="col-10" component="input" type="text" placeholder="Author"/>
                     </div>
                 </div>
 
                 <div className='form-group'>
-                    <label className='col-2 control-label' for="body">Body</label>
+                    <label className='col-2 control-label' htmlFor="body">Body</label>
                     <div className='col-10'>
                         <Field name="body" className="col-10" component="textarea" />
                     </div>

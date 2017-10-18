@@ -11,10 +11,10 @@ class Comments extends Component {
     submitVote = (commentid, votedirection) => {
       // Do something with the form values
       var values ={}
-      console.log('Comments submitVote',values);
+      
       values['option']= votedirection
       values['commentid']= commentid
-     
+
      this.props.changeVote(values)
     }
     doSortByDate= (event) => {
