@@ -18,12 +18,12 @@ class EditComment extends React.Component {
 
  }
  componentDidMount=()=> {
-     console.log("EditComment componentDidMount:",this.props)
+
      this.props.loadSingleComment(this.props.commentid)
 
  }
   render() {
-    console.log("EditCommentprops",this.props)
+    
     return (
       <EditCommentForm class= 'container' onSubmit={this.submit} data={this.props.commentid}/>
     );

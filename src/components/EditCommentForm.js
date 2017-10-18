@@ -8,39 +8,37 @@ import { connect } from 'react-redux'
 class EditCommentForm extends Component
 {
     componentWillMount=()=> {
-            console.log('EditCommentForm:componentWillMount calling load',this.props)
-
             this.props.load(this.props.data)
-
     }
-render()
-{
-    const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
-    return (
-      <div className='container app'>
-      <h1> Edit Comment </h1>
-         <form className='form-horizontal' onSubmit={handleSubmit}>
-            <div className='form-group'>
-                <label className='col-2 control-label' for="author">Author</label>
-                <div className='col-10'>
-                    <Field name="author" className="col-10" component="input" type="text" placeholder="Author"/>
+    render()
+    {
+        const { error, handleSubmit, pristine, reset, submitting, categories } = this.props;
+        return (
+          <div className='container app'>
+          <h1> Edit Comment </h1>
+             <form className='form-horizontal' onSubmit={handleSubmit}>
+                <div className='form-group'>
+                    <label className='col-2 control-label' for="author">Author</label>
+                    <div className='col-10'>
+                        <Field name="author" className="col-10" component="input" type="text" placeholder="Author"/>
+                    </div>
                 </div>
-            </div>
 
-            <div className='form-group'>
-                <label className='col-2 control-label' for="body">Body</label>
-                <div className='col-10'>
-                    <Field name="body" className="col-10" component="textarea" />
+                <div className='form-group'>
+                    <label className='col-2 control-label' for="body">Body</label>
+                    <div className='col-10'>
+                        <Field name="body" className="col-10" component="textarea" />
+                    </div>
                 </div>
-            </div>
-            <div>
-                <button type="submit" disabled={pristine || submitting}>Post</button>
-                <button type="button" disabled={pristine || submitting} onClick={reset}>Undo Changes</button>
-            </div>
-        </form>
+                <div>
+                    <button type="submit" disabled={pristine || submitting}>Post</button>
+                    <button type="button" disabled={pristine || submitting} onClick={reset}>Undo Changes</button>
+                </div>
+            </form>
 
-    </div>
-  );}
+        </div>
+      );
+  }
 };
 // Decorate the form component
 
