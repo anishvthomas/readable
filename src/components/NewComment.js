@@ -12,7 +12,7 @@ class NewComment extends React.Component {
     values['id']=uuid()
     values['voteScore']= 0
     values['parentId']=this.props.postid
-    console.log('NewComment enchanced',values);
+    
     this.props.createNewComment(values)
     this.props.history.goBack()
  }

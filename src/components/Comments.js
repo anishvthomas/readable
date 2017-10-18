@@ -14,7 +14,7 @@ class Comments extends Component {
       console.log('Comments submitVote',values);
       values['option']= votedirection
       values['commentid']= commentid
-      console.log('Comments submitVote enchanced',values);
+     
      this.props.changeVote(values)
     }
     doSortByDate= (event) => {
