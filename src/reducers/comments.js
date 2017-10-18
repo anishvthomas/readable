@@ -52,7 +52,7 @@ export default function comments(state=initialState,action) {
         case UPDATE_COMMENT: return updatedCommentsWithChanges(state,action)
         case LOAD_COMMENT_FORMDATA: return state
         case SORT_COMMENTS: return {...state,
-                                posts:state.comments.sort(sortBy(action.columnName))}
+                                ...state.comments.sort(sortBy(action.columnName))}
 
         default: return state
 
