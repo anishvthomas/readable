@@ -1,6 +1,6 @@
 import React ,{ Component} from 'react'
 import './PostDetail.css'
-import { fetchSinglePost, fetchComments, deletePost } from '../actions'
+import { fetchSinglePost, fetchComments, deletePost, updateVotes } from '../actions'
 import { connect } from 'react-redux'
 import Comments from './Comments'
 import { Button } from 'react-bootstrap'
@@ -11,6 +11,13 @@ class PostDetail extends Component {
         this.props.loadSinglePost(this.props.postid)
         this.props.loadComments(this.props.postid)
 
+    }
+    submitVote = (postid, votedirection) => {
+      // Do something with the form values
+      var values ={}
+      values['option']= votedirection
+      values['postid']= postid
+     this.props.changeVote(values)
     }
     render () {
         const {comments} =this.props.comments
@@ -32,7 +39,11 @@ class PostDetail extends Component {
             <span> in {this.props.currentpost && this.props.currentpost.category}</span>
             <p>{this.props.currentpost && this.props.currentpost.body} </p>
 
-            <button className="btn btn-skyblue"><i className="fa fa-thumbs-o-up"></i>{this.props.currentpost && this.props.currentpost.voteScore}</button>
+            <i className="fa fa-thumbs-o-up thumbs-up" aria-hidden="true" onClick={() => this.submitVote(this.props.postid,"upVote")}>  </i>
+            <span className="votescore">  {this.props.currentpost && this.props.currentpost.voteScore}  </span>
+             <i className="fa fa-thumbs-o-down thumbs-down" aria-hidden="true" onClick={() => this.submitVote(this.props.postid,"downVote")} ></i>
+
+            {/* <button className="btn btn-skyblue"><i className="fa fa-thumbs-o-up"></i>{this.props.currentpost && this.props.currentpost.voteScore}</button> */}
             <Link to={`/edit/post/${this.props.postid}`}>  <Button  bsStyle="primary"> Edit Post</Button>  </Link>
             <Button  bsStyle="danger" onClick={()=>{this.props.deleteSelected(this.props.postid); this.props.history.goBack()}}> Delete Post</Button>
               <button className="btn btn-skyblue" onClick={()=>this.props.history.goBack()}>
@@ -61,7 +72,9 @@ function mapDispatchToProps (dispatch) {
   return {
     loadSinglePost: (postid) => dispatch(fetchSinglePost(postid)),
     loadComments:(postid) => dispatch(fetchComments(postid)),
-    deleteSelected:(postid) => dispatch(deletePost(postid))
+    deleteSelected:(postid) => dispatch(deletePost(postid)),
+    changeVote:(voteData) => dispatch(updateVotes(voteData)),
+
 
   }
  }

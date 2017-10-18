@@ -3,7 +3,7 @@ import { RECEIVE_CATEGORIES, RECEIVE_ALL_POSTS, RECEIVE_COMMENTS,
   ADD_POST, ADD_COMMENT, RECEIVE_SINGLE_POST, UPDATE_VOTESCORE,
   UPDATE_COMMENT_VOTESCORE, SORT_POSTS, DELETE_COMMENT, LOAD_FORMDATA,
   LOAD_COMMENT_FORMDATA, UPDATE_POST, RECEIVE_SINGLE_COMMENT, UPDATE_COMMENT,
-  RECEIVE_ALL_COMMENTS, DELETE_POST } from './types'
+  RECEIVE_ALL_COMMENTS, DELETE_POST, SORT_COMMENTS } from './types'
 
 export const receiveCategories = categories => ({
 type: RECEIVE_CATEGORIES,
@@ -114,6 +114,16 @@ columnName
 export const sortData = (columnName) => dispatch => {
 
  dispatch(sortPosts(columnName))
+};
+
+export const sortComments = columnName => ({
+type: SORT_COMMENTS,
+columnName
+});
+
+export const sortCommentsData = (columnName) => dispatch => {
+
+ dispatch(sortComments(columnName))
 };
 
 

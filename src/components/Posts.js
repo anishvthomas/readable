@@ -6,21 +6,30 @@ import { sortData, deletePost, fetchAllComments } from '../actions'
 import { connect } from 'react-redux'
 
 class Posts extends Component {
+    state = {
+        sortDateDirection: 1,
+        sortVoteDirection: 1
+    }
     submitVote = (postid, votedirection) => {
       // Do something with the form values
       var values ={}
       values['option']= votedirection
       values['postid']= postid
      this.props.changeVote(values)
- }
-doSortByDate= (event) => {
-    event.preventDefault()
-    this.props.sortPostData('voteScore')
+    }
+    doSortByDate= (event) => {
+        event.preventDefault()
+        const sortColumn = this.state.sortDateDirection> 0?'timestamp':'-timestamp'
+        this.setState(()=>({sortDateDirection: this.state.sortDateDirection * -1}))
+        this.props.sortPostData(sortColumn)
     }
 
- doSortByVote = (event) => {
-     event.preventDefault()
-     this.props.sortPostData('datePosted')
+     doSortByVote = (event) => {
+         event.preventDefault()
+         const sortColumn = this.state.sortVoteDirection> 0?'voteScore':'-voteScore'
+         this.setState(()=>({sortVoteDirection: this.state.sortVoteDirection * -1}))
+         this.props.sortPostData(sortColumn)
+
      }
      componentDidMount () {
          this.getPostIDS()
@@ -59,13 +68,16 @@ doSortByDate= (event) => {
                 <td className='title'>
                 <Link to={{pathname: `/${postItem.category}/${postItem.id}`}}>{postItem.title}</Link>
                 <i className="fa fa-trash-o" aria-hidden="true" onClick={() => this.props.deleteSelected(postItem.id)}></i>
+
+                <Link to={`/edit/post/${postItem.id}`}>  <i className="fa fa-pencil-square-o" aria-hidden="true"></i>  </Link>
+
                 </td>
                 <td className='author'>{postItem.author}</td>
                 <td className='datePosted'>{new Date(postItem.timestamp).toString()}</td>
 
                 <td className='votescore'><i className="fa fa-thumbs-o-up thumbs-up" aria-hidden="true" onClick={() => this.submitVote(postItem.id,"upVote")}>  </i>
                 <span className="votescore">  {postItem.voteScore}  </span>
-                  <i className="fa fa-thumbs-o-down thumbs-down" aria-hidden="true" onClick={() => this.submitVote(postItem.id,"downVote")} ></i>
+                 <i className="fa fa-thumbs-o-down thumbs-down" aria-hidden="true" onClick={() => this.submitVote(postItem.id,"downVote")} ></i>
                 </td>
                 <td className='author'>{postItem.commentCount}</td>
 

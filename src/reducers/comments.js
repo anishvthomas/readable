@@ -1,6 +1,6 @@
 import sortBy from 'sort-by';
 import { RECEIVE_COMMENTS, RECEIVE_SINGLE_COMMENT ,UPDATE_COMMENT_VOTESCORE,
-    DELETE_COMMENT, LOAD_COMMENT_FORMDATA, UPDATE_COMMENT} from '../actions/types'
+    DELETE_COMMENT, LOAD_COMMENT_FORMDATA, UPDATE_COMMENT, SORT_COMMENTS} from '../actions/types'
 const initialState ={
     comments:[],
     currentComment:null,
@@ -51,6 +51,9 @@ export default function comments(state=initialState,action) {
             return updatedCommentsWithStatusChanges(state,action)
         case UPDATE_COMMENT: return updatedCommentsWithChanges(state,action)
         case LOAD_COMMENT_FORMDATA: return state
+        case SORT_COMMENTS: return {...state,
+                                posts:state.comments.sort(sortBy(action.columnName))}
+
         default: return state
 
     }

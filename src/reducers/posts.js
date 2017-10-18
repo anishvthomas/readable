@@ -3,15 +3,22 @@ import { RECEIVE_ALL_COMMENTS, RECEIVE_ALL_POSTS, RECEIVE_SINGLE_POST, UPDATE_VO
     LOAD_FORMDATA,UPDATE_POST, ADD_POST} from '../actions/types'
 const initialState ={
     posts:[],
-    currentPost:null
+    currentPost:null,
+
 }
 
 const updatedPostsWithVoteChanges = (state,action) => {
+    var currentPost= state.currentPost
+
+    if(state.currentPost && state.currentPost.id === action.voteData.id) {
+        currentPost['voteScore'] = action.voteData.voteScore
+    }
     const indexOfUpdatedPost = state.posts.findIndex((postItem) => {
       return postItem.id === action.voteData.id; });
     if( indexOfUpdatedPost >= 0 )
         return {...state,
-                ...state.posts[indexOfUpdatedPost].voteScore=action.voteData.voteScore }
+                ...state.posts[indexOfUpdatedPost].voteScore=action.voteData.voteScore ,
+                ...state['currentPost']=currentPost}
     else
         return state
 }
